@@ -2,10 +2,6 @@ package com.nielsen
 
 import com.fasterxml.jackson.core.JsonParseException
 import com.fasterxml.jackson.databind.exc.InvalidFormatException
-import com.nielsen.service.AccountNotFoundException
-import com.nielsen.service.DuplicateAccountException
-import com.nielsen.service.InsufficientFundsException
-import com.nielsen.service.TransferNotAllowedException
 import io.ktor.application.call
 import io.ktor.features.StatusPages
 import io.ktor.http.HttpStatusCode
@@ -15,16 +11,13 @@ import org.slf4j.LoggerFactory
 fun StatusPages.Configuration.globalExceptionHandler() {
     val log = LoggerFactory.getLogger(this.javaClass)
 
-    exception<TransferNotAllowedException> { e ->
+    exception<BadRequestException> { e ->
         call.respond(HttpStatusCode.BadRequest, ErrorResponse(e.localizedMessage))
     }
     exception<DuplicateAccountException> { e ->
         call.respond(HttpStatusCode.Conflict, ErrorResponse(e.localizedMessage))
     }
-    exception<InsufficientFundsException> { e ->
-        call.respond(HttpStatusCode.BadRequest, ErrorResponse(e.localizedMessage))
-    }
-    exception<InsufficientFundsException> { e ->
+    exception<BadRequestException> { e ->
         call.respond(HttpStatusCode.BadRequest, ErrorResponse(e.localizedMessage))
     }
     exception<InvalidFormatException> { e ->
