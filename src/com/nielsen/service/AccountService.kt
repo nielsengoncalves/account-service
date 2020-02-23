@@ -1,7 +1,11 @@
 package com.nielsen.service
 
-import com.nielsen.AccountDatabase
-import com.nielsen.compute
+import com.nielsen.application.AccountDatabase
+import com.nielsen.application.AccountNotFoundException
+import com.nielsen.application.DuplicateAccountException
+import com.nielsen.application.InsufficientFundsException
+import com.nielsen.application.TransferNotAllowedException
+import com.nielsen.application.compute
 import com.nielsen.model.Account
 import com.nielsen.model.Amount
 import java.math.BigDecimal
@@ -64,15 +68,3 @@ class AccountService(private val accountDatabase: AccountDatabase) {
     private fun Account.withdraw(amount: Amount): Account =
         this.copy(balance = Account.Balance(this.balance.value - amount.value))
 }
-
-class TransferNotAllowedException(accountId: Account.Id) :
-    RuntimeException("Cannot transfer money within same account ${accountId.value}.")
-
-class DuplicateAccountException(accountId: Account.Id) :
-    RuntimeException("Account ${accountId.value} already exists.")
-
-class InsufficientFundsException(accountId: Account.Id) :
-    RuntimeException("Account ${accountId.value} doesn't have sufficient funds for this operation.")
-
-class AccountNotFoundException(accountId: Account.Id) :
-    RuntimeException("Account ${accountId.value} not found.")

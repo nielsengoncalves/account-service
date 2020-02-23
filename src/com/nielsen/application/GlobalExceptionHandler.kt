@@ -1,4 +1,4 @@
-package com.nielsen
+package com.nielsen.application
 
 import com.fasterxml.jackson.core.JsonParseException
 import com.fasterxml.jackson.databind.exc.InvalidFormatException
@@ -12,22 +12,34 @@ fun StatusPages.Configuration.globalExceptionHandler() {
     val log = LoggerFactory.getLogger(this.javaClass)
 
     exception<BadRequestException> { e ->
-        call.respond(HttpStatusCode.BadRequest, ErrorResponse(e.localizedMessage))
+        call.respond(HttpStatusCode.BadRequest,
+            ErrorResponse(e.localizedMessage)
+        )
     }
     exception<DuplicateAccountException> { e ->
-        call.respond(HttpStatusCode.Conflict, ErrorResponse(e.localizedMessage))
+        call.respond(HttpStatusCode.Conflict,
+            ErrorResponse(e.localizedMessage)
+        )
     }
     exception<BadRequestException> { e ->
-        call.respond(HttpStatusCode.BadRequest, ErrorResponse(e.localizedMessage))
+        call.respond(HttpStatusCode.BadRequest,
+            ErrorResponse(e.localizedMessage)
+        )
     }
     exception<InvalidFormatException> { e ->
-        call.respond(HttpStatusCode.BadRequest, ErrorResponse(e.localizedMessage))
+        call.respond(HttpStatusCode.BadRequest,
+            ErrorResponse(e.localizedMessage)
+        )
     }
     exception<JsonParseException> { e ->
-        call.respond(HttpStatusCode.BadRequest, ErrorResponse(e.localizedMessage))
+        call.respond(HttpStatusCode.BadRequest,
+            ErrorResponse(e.localizedMessage)
+        )
     }
     exception<IllegalArgumentException> { e ->
-        call.respond(HttpStatusCode.BadRequest, ErrorResponse(e.localizedMessage))
+        call.respond(HttpStatusCode.BadRequest,
+            ErrorResponse(e.localizedMessage)
+        )
     }
     exception<AccountNotFoundException> {
         call.respond(HttpStatusCode.NotFound)

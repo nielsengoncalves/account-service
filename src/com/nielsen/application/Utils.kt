@@ -1,4 +1,4 @@
-package com.nielsen
+package com.nielsen.application
 
 import com.nielsen.model.Account
 import java.util.concurrent.ConcurrentHashMap

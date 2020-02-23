@@ -1,6 +1,6 @@
 package com.nielsen.api
 
-import com.nielsen.main
+import com.nielsen.application.main
 import io.kotlintest.shouldBe
 import io.ktor.application.Application
 import io.ktor.http.HttpHeaders
@@ -21,11 +21,13 @@ class AccountApiIntegrationTest {
 
         @Test
         fun `should return created when account is created `() = withTestApplication(Application::main) {
+            val accountId = UUID.fromString("9e35e732-3849-4aa8-9073-8626da5d18c6")
             with(handleRequest(HttpMethod.Post, "/accounts") {
-                setBody("{\"id\": \"9e35e732-3849-4aa8-9073-8626da5d18c6\"}")
+                setBody("{\"id\": \"$accountId\"}")
                 addHeader(HttpHeaders.ContentType, "application/json")
             }) {
                 response.status() shouldBe HttpStatusCode.Created
+                response.content shouldBe "{\"id\":\"$accountId\",\"balance\":0.00}"
             }
         }
 

@@ -1,5 +1,6 @@
-package com.nielsen
+package com.nielsen.application
 
+import com.nielsen.application.compute
 import io.kotlintest.shouldBe
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
