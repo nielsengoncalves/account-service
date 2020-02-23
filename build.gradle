@@ -46,10 +46,14 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:$logback_version")
     implementation("io.ktor:ktor-server-core:$ktor_version")
     implementation("io.ktor:ktor-jackson:$ktor_version")
-    implementation("org.kodein.di:kodein-di-generic-jvm:6.5.0")
-    implementation("org.kodein.di:kodein-di-framework-ktor-server-jvm:6.5.0")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.0")
-    testCompile("org.junit.jupiter:junit-jupiter-params:5.6.0")
-    testImplementation("io.kotlintest:kotlintest-assertions:3.4.2")
+    testCompile("io.ktor:ktor-server-test-host:$ktor_version")
+
+    implementation("org.kodein.di:kodein-di-generic-jvm:$kodein_version")
+    implementation("org.kodein.di:kodein-di-framework-ktor-server-jvm:$kodein_version")
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:$junit_version")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junit_version")
+    testCompile("org.junit.jupiter:junit-jupiter-params:$junit_version")
+
+    testImplementation("io.kotlintest:kotlintest-assertions:$kotlin_test_version")
 }

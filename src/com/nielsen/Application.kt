@@ -2,7 +2,6 @@ package com.nielsen
 
 import com.nielsen.api.accountApi
 import com.nielsen.service.AccountService
-import com.nielsen.service.AccountServiceImpl
 import io.ktor.application.Application
 import io.ktor.application.install
 import io.ktor.features.ContentNegotiation
@@ -28,6 +27,6 @@ fun Application.main() {
 }
 
 private fun buildDIContainer(): Kodein = Kodein {
-    bind<AccountsDatabase>() with singleton { AccountsDatabase() }
-    bind<AccountService>() with singleton { AccountServiceImpl(instance()) }
+    bind<AccountDatabase>() with singleton { AccountDatabase() }
+    bind<AccountService>() with singleton { AccountService(instance()) }
 }

@@ -16,22 +16,25 @@ fun StatusPages.Configuration.globalExceptionHandler() {
     val log = LoggerFactory.getLogger(this.javaClass)
 
     exception<TransferNotAllowedException> { e ->
-        call.respond(HttpStatusCode.BadRequest, e.localizedMessage)
+        call.respond(HttpStatusCode.BadRequest, ErrorResponse(e.localizedMessage))
     }
     exception<DuplicateAccountException> { e ->
-        call.respond(HttpStatusCode.Conflict, e.localizedMessage)
+        call.respond(HttpStatusCode.Conflict, ErrorResponse(e.localizedMessage))
     }
     exception<InsufficientFundsException> { e ->
-        call.respond(HttpStatusCode.BadRequest, e.localizedMessage)
+        call.respond(HttpStatusCode.BadRequest, ErrorResponse(e.localizedMessage))
     }
     exception<InsufficientFundsException> { e ->
-        call.respond(HttpStatusCode.BadRequest, e.localizedMessage)
+        call.respond(HttpStatusCode.BadRequest, ErrorResponse(e.localizedMessage))
     }
     exception<InvalidFormatException> { e ->
-        call.respond(HttpStatusCode.BadRequest, e.localizedMessage)
+        call.respond(HttpStatusCode.BadRequest, ErrorResponse(e.localizedMessage))
     }
     exception<JsonParseException> { e ->
-        call.respond(HttpStatusCode.BadRequest, e.localizedMessage)
+        call.respond(HttpStatusCode.BadRequest, ErrorResponse(e.localizedMessage))
+    }
+    exception<IllegalArgumentException> { e ->
+        call.respond(HttpStatusCode.BadRequest, ErrorResponse(e.localizedMessage))
     }
     exception<AccountNotFoundException> {
         call.respond(HttpStatusCode.NotFound)
@@ -41,3 +44,5 @@ fun StatusPages.Configuration.globalExceptionHandler() {
         call.respond(HttpStatusCode.InternalServerError)
     }
 }
+
+data class ErrorResponse(val message: String)
