@@ -11,12 +11,12 @@ import com.nielsen.model.Amount
 import com.nielsen.model.DeduplicationId
 import io.kotlintest.shouldBe
 import io.kotlintest.shouldThrow
+import java.util.UUID
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
-import java.util.*
 
 class AccountServiceTest {
 
@@ -466,5 +466,4 @@ class AccountServiceTest {
     }
 
     private fun getAccountData(accountId: Account.Id): AccountData = accountDatabase[accountId]!!
-
 }

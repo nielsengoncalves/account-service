@@ -11,9 +11,9 @@ import io.ktor.server.testing.TestApplicationEngine
 import io.ktor.server.testing.handleRequest
 import io.ktor.server.testing.setBody
 import io.ktor.server.testing.withTestApplication
+import java.util.UUID
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
-import java.util.*
 
 class AccountApiIntegrationTest {
 
@@ -38,7 +38,6 @@ class AccountApiIntegrationTest {
                         }
                         """.trimIndent()
                     )
-
                 }.apply {
                     response.shouldHaveStatus(HttpStatusCode.Created)
                     response.shouldHaveResponse(
@@ -68,7 +67,6 @@ class AccountApiIntegrationTest {
                         }
                         """.trimIndent()
                     )
-
                 }.apply {
                     response.shouldHaveStatus(HttpStatusCode.Conflict)
                 }
@@ -130,7 +128,6 @@ class AccountApiIntegrationTest {
                         }
                         """.trimIndent()
                     )
-
                 }.apply {
                     response.shouldHaveStatus(HttpStatusCode.OK)
                     response.shouldHaveResponse(
@@ -162,7 +159,6 @@ class AccountApiIntegrationTest {
                         }
                         """.trimIndent()
                     )
-
                 }.apply {
                     response.shouldHaveStatus(HttpStatusCode.BadRequest)
                 }
@@ -190,7 +186,6 @@ class AccountApiIntegrationTest {
                         }
                         """.trimIndent()
                     )
-
                 }.apply {
                     response.shouldHaveStatus(HttpStatusCode.OK)
                     response.shouldHaveResponse(
@@ -223,7 +218,6 @@ class AccountApiIntegrationTest {
                         }
                         """.trimIndent()
                     )
-
                 }.apply {
                     response.shouldHaveStatus(HttpStatusCode.BadRequest)
                 }
@@ -255,7 +249,6 @@ class AccountApiIntegrationTest {
                         }
                         """.trimIndent()
                     )
-
                 }.apply {
                     response.shouldHaveStatus(HttpStatusCode.OK)
                     response.shouldHaveResponse(
@@ -304,7 +297,6 @@ class AccountApiIntegrationTest {
                         }
                         """.trimIndent()
                     )
-
                 }.apply {
                     response.shouldHaveStatus(HttpStatusCode.BadRequest)
                 }
