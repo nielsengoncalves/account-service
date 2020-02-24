@@ -40,8 +40,7 @@ class AccountService(private val accountDatabase: AccountDatabase) {
             throw TransferNotAllowedException(sourceAccountId)
         }
 
-        return accountDatabase.compute(
-            sourceAccountId,
+        return accountDatabase.compute(sourceAccountId,
             ifAbsent = { throw AccountNotFoundException(it) },
             ifPresent = { _, sourceAccount ->
                 checkFundsForWithdraw(sourceAccount, amount)
