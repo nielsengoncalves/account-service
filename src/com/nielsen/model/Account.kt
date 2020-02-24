@@ -1,7 +1,7 @@
 package com.nielsen.model
 
 import java.math.BigDecimal
-import java.util.*
+import java.util.UUID
 
 data class Account(val id: Id, val balance: Balance = Balance(BigDecimal.ZERO.setScale(2))) {
     data class Id(val value: UUID)

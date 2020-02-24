@@ -1,10 +1,9 @@
 package com.nielsen.application
 
-import com.nielsen.application.compute
 import io.kotlintest.shouldBe
+import java.util.concurrent.ConcurrentHashMap
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
-import java.util.concurrent.ConcurrentHashMap
 
 class UtilsTest {
 

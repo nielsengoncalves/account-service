@@ -35,7 +35,6 @@ class AccountService(private val accountDatabase: AccountDatabase) {
                 existingAccount.withdraw(amount)
             })
 
-
     fun transfer(sourceAccountId: Account.Id, destinationAccountId: Account.Id, amount: Amount): Account {
         if (sourceAccountId == destinationAccountId) {
             throw TransferNotAllowedException(sourceAccountId)

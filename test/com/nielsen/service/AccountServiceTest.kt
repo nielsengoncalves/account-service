@@ -9,13 +9,13 @@ import com.nielsen.model.Account
 import com.nielsen.model.Amount
 import io.kotlintest.shouldBe
 import io.kotlintest.shouldThrow
+import java.lang.IllegalArgumentException
+import java.util.UUID
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
-import java.lang.IllegalArgumentException
-import java.util.*
 
 class AccountServiceTest {
 
@@ -38,6 +38,7 @@ class AccountServiceTest {
             )
 
             val actualAccount = accountService.insert(account)
+
             actualAccount shouldBe account
         }
 
@@ -67,6 +68,7 @@ class AccountServiceTest {
             insertAccount(account)
 
             val actualAccount = accountService.getAccountById(account.id)
+
             actualAccount shouldBe account
         }
 
@@ -92,6 +94,7 @@ class AccountServiceTest {
             insertAccount(account)
 
             val actualAccount = accountService.deposit(account.id, Amount.from("50".toBigDecimal()))
+
             actualAccount shouldBe Account(
                 id = Account.Id(UUID.fromString("806daf1a-d72b-4edb-845e-7c87497ecffb")),
                 balance = Account.Balance("50.00".toBigDecimal())
@@ -193,8 +196,8 @@ class AccountServiceTest {
                 destinationAccountId = destinationAccount.id,
                 amount = Amount.from(amount.toBigDecimal())
             )
-            val actualDestinationAccountBalance = getAccountBalance(destinationAccount.id)
 
+            val actualDestinationAccountBalance = getAccountBalance(destinationAccount.id)
             actualSourceAccount shouldBe Account(
                 id = Account.Id(UUID.fromString("806daf1a-d72b-4edb-845e-7c87497ecffb")),
                 balance = Account.Balance("1000.00".toBigDecimal() - amount.toBigDecimal())
@@ -267,7 +270,7 @@ class AccountServiceTest {
             insertAccount(destinationAccount)
 
             shouldThrow<InsufficientFundsException> {
-                accountService.transfer(sourceAccount.id, destinationAccount.id, Amount.from(1000.10.toBigDecimal()))
+                accountService.transfer(sourceAccount.id, destinationAccount.id, Amount.from("1000.10".toBigDecimal()))
             }
 
             val actualSourceAccountBalance = getAccountBalance(sourceAccount.id)

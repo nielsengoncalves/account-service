@@ -5,7 +5,7 @@ import java.util.concurrent.ConcurrentHashMap
 
 typealias AccountDatabase = ConcurrentHashMap<Account.Id, Account>
 
-fun <K, V: Any> ConcurrentHashMap<K, V>.compute(key: K, ifAbsent: (K) -> V, ifPresent: (K, V) -> V): V {
+fun <K, V : Any> ConcurrentHashMap<K, V>.compute(key: K, ifAbsent: (K) -> V, ifPresent: (K, V) -> V): V {
     return this.compute(key) { _, value ->
         if (value == null) {
             ifAbsent(key)

@@ -14,4 +14,4 @@ class TransferNotAllowedException(accountId: Account.Id) :
 class InsufficientFundsException(accountId: Account.Id) :
     BadRequestException("Account ${accountId.value} doesn't have sufficient funds for this operation.")
 
-open class BadRequestException(message: String): RuntimeException(message)
+open class BadRequestException(message: String) : RuntimeException(message)
