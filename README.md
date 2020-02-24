@@ -38,7 +38,7 @@ Content-Type: application/json; charset=UTF-8
 {"id":"bd3e5a04-71fc-4588-baf6-809269842c23","balance":0.00}
 ```
 
-### Find Account
+### Find Account (Idempotent)
 ```
 $ curl -X GET 'http://localhost:8080/accounts/bd3e5a04-71fc-4588-baf6-809269842c23' -i \
     -H 'Accept: application/json'
@@ -50,15 +50,15 @@ HTTP/1.1 200 OK
 Content-Length: 60
 Content-Type: application/json; charset=UTF-8
 
-{"id":"bd3e5a04-71fc-4588-baf6-809269842c23","balance":0.00}⏎
+{"id":"bd3e5a04-71fc-4588-baf6-809269842c23","balance":0.00}
 ```
 
-### Deposit
+### Deposit (Idempotent)
 ```
 $ curl -X POST 'http://localhost:8080/accounts/bd3e5a04-71fc-4588-baf6-809269842c23/deposit' -i \
     -H 'Content-Type: application/json' \
     -H 'Accept: application/json' \
-    -d '{"amount": 1000.00}'
+    -d '{"amount": "1000.00", "deduplicationId": "8da35d0c-a56f-40b6-8985-240f7fcc280f"}'
 ```
 
 Response:
@@ -70,12 +70,12 @@ Content-Type: application/json; charset=UTF-8
 {"id":"bd3e5a04-71fc-4588-baf6-809269842c23","balance":1000.00}
 ```
 
-### Withdraw
+### Withdraw (Idempotent)
 ```
 $ curl -X POST 'http://localhost:8080/accounts/bd3e5a04-71fc-4588-baf6-809269842c23/withdraw' -i \
     -H 'Content-Type: application/json' \
     -H 'Accept: application/json' \
-    -d '{"amount": 250.00}'
+    -d '{"amount": 250.00, "deduplicationId": "21a3173c-03f3-43ff-b2df-568a676b7b0e"}'
 ```
 
 Response:
@@ -87,12 +87,12 @@ Content-Type: application/json; charset=UTF-8
 {"id":"bd3e5a04-71fc-4588-baf6-809269842c23","balance":750.00}
 ```
 
-### Transfer
+### Transfer (Idempotent)
 ```
 $ curl -X POST 'http://localhost:8080/accounts/bd3e5a04-71fc-4588-baf6-809269842c23/transfer' -i \
     -H 'Content-Type: application/json' \
     -H 'Accept: application/json' \
-    -d '{"destinationAccountId": "e7bf11c8-0d10-40cc-b4ff-a2690017d965", "amount": 100.00}'
+    -d '{"destinationAccountId": "e7bf11c8-0d10-40cc-b4ff-a2690017d965", "amount": "100.00", "deduplicationId": "9a7c361b-fec6-441f-9f99-d34e91e58b65"}'
 ```
 
 Response:
