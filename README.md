@@ -1,5 +1,5 @@
 # Account-Service
-Simple backend service with money operation APIs backed by [Ktor](https://ktor.io/).
+Simple backend service money operation APIs backed by [Ktor](https://ktor.io/).
 
 ## Requirements
 - Java 8
@@ -14,7 +14,7 @@ $ ./gradlew build
 The executable jar will be available in the folder `/build/libs` and can be executed with the following command:
 
 ```bash
-$ java -jar money-transfer-0.0.1.jar
+$ java -jar account-service-0.0.1.jar
 ```
 
 By default the server will start listening in the port `8080`, but it can be changed in the `resources/application.conf`
