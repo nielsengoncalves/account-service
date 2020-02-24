@@ -1,5 +1,5 @@
-# Account-API
-Simple RESTful API for money transfers between accounts using [Ktor](https://ktor.io/).
+# Account-Service
+Simple backend service with money operation APIs backed by [Ktor](https://ktor.io/).
 
 ## Requirements
 - Java 8
